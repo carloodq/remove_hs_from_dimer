@@ -1,0 +1,4 @@
+bde_data/*
+!bde_data/extract_xyz.py
+!bde_data/generate_csv.py
+!bde_data/all_xyz.csv

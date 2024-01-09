@@ -24,7 +24,7 @@ Each row includes:
 
 Here are some examples of one original and one modified dimer. You can notice that the second dimer is missing one H.
 
-![](bde_data/whole.png)
-![](bde_data/1.png)
+![](whole.png)
+![](1.png)
 
 # to do: read paper: why so many, why some are qm_opt_dimer; push to gh
