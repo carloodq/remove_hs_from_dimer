@@ -15,6 +15,7 @@ def create_newxyzs(m, item):
     for atom in m.GetAtoms():
         if atom.GetSymbol() == 'H':
             h = atom.GetIdx()
+            fragment = str(atom.GetOwningMol())
             ns = atom.GetNeighbors()
             if len(ns) > 1: # if not outside
                 continue
@@ -27,7 +28,7 @@ def create_newxyzs(m, item):
                         mw = Chem.RWMol(m)
                         mw.RemoveAtom(h)
                         xyz = Chem.MolToXYZBlock(mw)
-                        newxyzs.append([item , xyz , h , n.GetSymbol() , neighbors])
+                        newxyzs.append([item , xyz , h , n.GetSymbol() , neighbors, fragment])
     return newxyzs
 
 cwd = os.getcwd()
@@ -49,6 +50,6 @@ for item in items:
         newxyzs = create_newxyzs(m, item)  
         all_xyz.extend(newxyzs)   
 
-all_xyz = pd.DataFrame(all_xyz, columns=['molecule_name', 'xyz', 'atom_index', 'attached_atom', 'neighboring_atoms'])
+all_xyz = pd.DataFrame(all_xyz, columns=['molecule_name', 'xyz', 'atom_index', 'attached_atom', 'neighboring_atoms', 'fragment'])
 # save it 
 all_xyz.to_csv('all_xyz.csv')
