@@ -27,4 +27,3 @@ Here are some examples of one original and one modified dimer. You can notice th
 ![](whole.png)
 ![](1.png)
 
-# to do: read paper: why so many, why some are qm_opt_dimer; push to gh
