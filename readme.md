@@ -21,6 +21,7 @@ Each row includes:
 - **atom_index**: index of the removed atom in the original XYZ
 - **attached_atom**: 1st connection to the removed H
 - **neighboring_atoms**: neighbouring atoms to the removed H
+- **fragment**: monomer it belongs to 
 
 Here are some examples of one original and one modified dimer. You can notice that the second dimer is missing one H.
 
