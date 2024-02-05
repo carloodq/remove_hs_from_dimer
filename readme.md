@@ -23,6 +23,10 @@ Each row includes:
 - **neighboring_atoms**: neighbouring atoms to the removed H
 - **fragment**: monomer the abstracted H belonged to 
 
+Core subset 15k:
+- QM up to 4 confromers
+- MD up to 10 conformers
+
 Here are some examples of one original and one modified dimer. You can notice that the second dimer is missing one H.
 
 ![](whole.png)
