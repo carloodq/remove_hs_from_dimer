@@ -6,7 +6,7 @@ from rdkit.Chem import rdDetermineBonds
 # df = pd.read_csv("Donchev et al DES370K.csv")
 # extract_xyz(df.head(100))
 
-def create_newxyzs(m, item):
+def create_newxyzs(m, item, conformer):
     ''' 
     it takes all the Hs that could be removed, it records the 1st connection and the neighbor's connections
     takes as input a Mol RDkit object of a molecule, returns a list of broken xyzs with respective parameters
@@ -31,7 +31,7 @@ def create_newxyzs(m, item):
                             mw.RemoveAtom(h)
                             xyz_reduced = Chem.MolToXYZBlock(mw)
                             xyz = Chem.MolToXYZBlock(m)
-                            newxyzs.append([item , xyz , xyz_reduced,  h , n.GetSymbol() , neighbors, fragment])
+                            newxyzs.append([conformer, item , xyz , xyz_reduced,  h , n.GetSymbol() , neighbors, fragment])
     return newxyzs
 
 cwd = os.getcwd()
@@ -52,9 +52,9 @@ for item in items:
             mol = Chem.Mol(raw_mol)
             rdDetermineBonds.DetermineConnectivity(mol)
             m = mol
-            newxyzs = create_newxyzs(m, item)  
+            newxyzs = create_newxyzs(m, item, str(conformer))  
             all_xyz.extend(newxyzs)   
 
-all_xyz = pd.DataFrame(all_xyz, columns=['molecule_name', 'xyz', 'xyz_reduced', 'atom_index', 'attached_atom', 'neighboring_atoms', 'fragment'])
+all_xyz = pd.DataFrame(all_xyz, columns=['conformer', 'molecule_name', 'xyz', 'xyz_reduced', 'atom_index', 'attached_atom', 'neighboring_atoms', 'fragment'])
 # save it 
 all_xyz.to_csv('all_xyz.csv')
