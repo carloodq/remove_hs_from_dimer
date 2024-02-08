@@ -32,3 +32,25 @@ Here are some examples of one original and one modified dimer. You can notice th
 ![](whole.png)
 ![](1.png)
 
+## Part 3
+Once the .csv has been generated, you make create folders and .xyz files.
+Make sure to be at the same path as the `make_folders.py` script and `all_xyz.xyz`, then run the following command 
+```
+python make_folders.py
+```
+
+The folder structure generated will be
+```
+├── <dimer name>
+│   ├── <conformer_k_index>
+│   │   ├── original.xyz
+│   │   ├── <index of abstracted h>.xyz
+│   │   ├── <index of abstracted h>.xyz
+│   │   ├── ..
+│   │   ├── ..
+```
+
+
+
+
+
