@@ -4,7 +4,7 @@
 Set up the directory with the xyz file by running this command
 
 ```python
-df = pd.read_csv("Donchev et al DES370K.csv")
+df = pd.read_csv("Donchev et al DES15K.csv")
 extract_xyz(df)
 ```
 
@@ -24,8 +24,10 @@ Each row includes:
 - **fragment**: monomer the abstracted H belonged to 
 
 Core subset 15k:
-- QM up to 4 confromers
+- QM up to 4 conformers
 - MD up to 10 conformers
+
+After generating a new row for each H in the dimer, we drop duplicates. The logic adopted is to randomly keep just one row when there are more than 1 H abstractions with identical 1st connectivity and 2nd connectivity. We can instead decide to keep all rows by setting ```just_unique = False``` in  `generate_csv.py`.
 
 Here are some examples of one original and one modified dimer. You can notice that the second dimer is missing one H.
 
@@ -49,6 +51,8 @@ The folder structure generated will be
 │   │   ├── ..
 │   │   ├── ..
 ```
+
+
 
 
 
