@@ -109,7 +109,7 @@ def row_to_xyz(row):
     lines = []
     lines.append(str(len(xyz)))  # n atoms
     lines.append(", ".join(  # comment line
-        row[['smiles0', 'smiles1', 'group_orig', 'k_index', 'system_id',
+        row[['charge0', 'charge1', 'smiles0', 'smiles1', 'group_orig', 'k_index', 'system_id',
              'group_id', 'geom_id']].astype(str)))
     for ixyz, ele in zip(xyz, elements):  # coordinates and atoms
         lines.append("%s %s %s %s" % (ele, *ixyz))

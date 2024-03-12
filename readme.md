@@ -42,6 +42,10 @@ In addition to generating abstracted molecules from **Donchev et al DES15K**, we
 
 The initial .xyz files are found in the `xyznenci` folder. Running the script `save_xyz_nenci.py` generates the file `all_xyz_nenci.csv`, which contains the same columns as `all_xyz.csv`.
 
+## Part 2.c
+We will add SSI and BBI from the BFDb.
+You can generate the structures with the script `save_xyz_bfdb.py`, which will be saved in the file `all_xyz_bfdb.csv` (in the same columns format as other .csvs).
+
 ## Part 3
 Once the .csv has been generated, you make create folders and .xyz files.
 Make sure to be at the same path as the `make_folders.py` script and `all_xyz.xyz`, then run the following command 
@@ -59,10 +63,3 @@ The folder structure generated will be
 │   │   ├── ..
 │   │   ├── ..
 ```
-
-
-
-
-
-
-
