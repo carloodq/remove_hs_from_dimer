@@ -47,19 +47,5 @@ We will add SSI and BBI from the BFDb.
 You can generate the structures with the script `save_xyz_bfdb.py`, which will be saved in the file `all_xyz_bfdb.csv` (in the same columns format as other .csvs).
 
 ## Part 3
-Once the .csv has been generated, you make create folders and .xyz files.
-Make sure to be at the same path as the `make_folders.py` script and `all_xyz.xyz`, then run the following command 
-```
-python make_folders.py
-```
-
-The folder structure generated will be
-```
-├── <dimer name>
-│   ├── <conformer_k_index>
-│   │   ├── original.xyz
-│   │   ├── <index of abstracted h>.xyz
-│   │   ├── <index of abstracted h>.xyz
-│   │   ├── ..
-│   │   ├── ..
-```
+To generate the .xyz file run the command
+```save_xyz.py```
