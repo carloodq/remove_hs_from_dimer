@@ -1,4 +1,4 @@
-from generate_csv import create_newxyzs
+from create_newxyzs import create_newxyzs
 import pandas as pd
 import os
 from rdkit import Chem
@@ -11,7 +11,7 @@ def get_csv_bfdb(path_bfdb_xyzs):
     items = os.listdir()
     all_xyz = []
 
-    for dimer in items[:3]:
+    for dimer in items[:30]:
         if dimer[-9:] == "dimer.xyz": # only dimers
             raw_mol = Chem.MolFromXYZFile(dimer)
             mol = Chem.Mol(raw_mol)
@@ -34,6 +34,7 @@ def get_csv_bfdb(path_bfdb_xyzs):
 
 
 dfs = []
+
 bfdb_datasets = ["BBI_xyzfiles/BBI25", "BBI_xyzfiles/BBI_less_BBI25",
                  "SSI_xyzfiles/SSI_less_SSI500", "SSI_xyzfiles/SSI500_less_SSI100", "SSI_xyzfiles/SSI100"]
 
@@ -41,6 +42,9 @@ for pth in bfdb_datasets:
     dfs.append(get_csv_bfdb(pth))
 
 all_xyz = pd.concat(dfs)
+
+# add molecule index 
+all_xyz['item_index' ] = all_xyz.groupby("molecule_name").ngroup()
 
 all_xyz.to_csv('all_xyz_bfdb.csv', index = None)
 

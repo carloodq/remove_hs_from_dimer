@@ -1,4 +1,4 @@
-from generate_csv import create_newxyzs
+from create_newxyzs import create_newxyzs
 import pandas as pd
 import os
 from rdkit import Chem
@@ -11,7 +11,7 @@ def save_csv_nenci(path_nenci_xyzs):
     items = os.listdir()
     all_xyz = []
 
-    for dimer in items[:3]:
+    for dimer in items[:30]:
         raw_mol = Chem.MolFromXYZFile(dimer)
         mol = Chem.Mol(raw_mol)
         rdDetermineBonds.DetermineConnectivity(mol)
@@ -26,11 +26,17 @@ def save_csv_nenci(path_nenci_xyzs):
 
     all_xyz = pd.DataFrame(all_xyz, columns=['conformer', 'molecule_name', 'xyz',
                                         'xyz_reduced', 'atom_index', 'attached_atom',
-                                        'neighboring_atoms', 'fragment', 'netcharge', 'multiplicity', 'smiles_orig', 'smiles_reduced']) 
+                                        'neighboring_atoms', 'fragment', 'netcharge',
+                                        'multiplicity', 'smiles_orig', 'smiles_reduced']) 
+    
+    # add molecule index
+    all_xyz['item_index' ] = all_xyz.groupby("molecule_name").ngroup()
+
     os.chdir("../")
     all_xyz.to_csv('all_xyz_nenci.csv', index=None)
 
     return 0
+
 
 save_csv_nenci("xyznenci")
 

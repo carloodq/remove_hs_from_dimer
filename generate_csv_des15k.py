@@ -82,6 +82,10 @@ for item in items:
 all_xyz = pd.DataFrame(all_xyz, columns=['conformer', 'molecule_name', 'xyz',
                                           'xyz_reduced', 'atom_index', 'attached_atom',
                                             'neighboring_atoms', 'fragment', 'netcharge', 'multiplicity', 'smiles_orig', 'smiles_reduced'])
+
+# add molecule index 
+all_xyz['item_index' ] = all_xyz.groupby("molecule_name").ngroup()
+
 # save it 
 os.chdir("../")
-all_xyz.to_csv('all_xyz.csv')
+all_xyz.to_csv('all_xyz_des15k.csv', index=None)

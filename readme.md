@@ -11,11 +11,11 @@ extract_xyz(df)
 ```
 
 ## Part 2.a
-You can run `generate_csv.py` to create the new xyzs, which correspond to the original xyz for each dimer, minus one hydrogen.
+You can run `generate_csv_des15k.py` to create the new xyzs, which correspond to the original xyz for each dimer, minus one hydrogen.
 
 For the hydrogen to be removed it must be connected to one of C,N,O,P or S.
 
-The resulting file, `all_xyz.csv`, contains all new generated xyzs. 
+The resulting file, `all_xyz_des15k.csv`, contains all new generated xyzs. 
 Each row includes:
 - **molecule_name**: smiles of the dimer
 - **xyz**: xyz of the original dimer
@@ -40,11 +40,11 @@ Here are some examples of one original and one modified dimer. You can notice th
 ## Part 2.b
 In addition to generating abstracted molecules from **Donchev et al DES15K**, we decided to extend the generation to another dimer dataset, **NENCI-2021**. It includes a total of 7741 dimer configurations, generated from 141 unique dimers at 7 intermediate distances and 9 angles.
 
-The initial .xyz files are found in the `xyznenci` folder. Running the script `save_xyz_nenci.py` generates the file `all_xyz_nenci.csv`, which contains the same columns as `all_xyz.csv`.
+The initial .xyz files are found in the `xyznenci` folder. Running the script `generate_csv_nenci.py` generates the file `all_xyz_nenci.csv`, which contains the same columns as `all_xyz.csv`.
 
 ## Part 2.c
 We will add SSI and BBI from the BFDb.
-You can generate the structures with the script `save_xyz_bfdb.py`, which will be saved in the file `all_xyz_bfdb.csv` (in the same columns format as other .csvs).
+You can generate the structures with the script `generate_csv_bfdb.py`, which will be saved in the file `all_xyz_bfdb.csv` (in the same columns format as other .csvs).
 
 ## Part 3
 To generate the .xyz file run the command
